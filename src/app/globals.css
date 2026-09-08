@@ -1,26 +1,280 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* =========================================================
+   BASE & THEME TOKENS
+   ========================================================= */
+
+/* Default Root Fallback */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #f2f7f4;
+  --bg-secondary: #e5f0e8;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fbf9;
+  --border-color: rgba(5, 150, 105, 0.2);
+  --border-highlight: rgba(5, 150, 105, 0.45);
+  --text-primary: #041f11;
+  --text-secondary: #133c24;
+  --text-muted: #2d5a3d;
+  --nav-bg: #f2f7f4;
+  --grid-color: rgba(5, 150, 105, 0.05);
+
+  --accent-primary: #059669;
+  --accent-secondary: #10b981;
+  --accent-glow: rgba(16, 185, 129, 0.3);
+  --accent-border: rgba(16, 185, 129, 0.55);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* 1. Light Mode - Mountain Sage, High-Contrast */
+html[data-theme="light"],
+html.light {
+  --bg-primary: #f2f7f4;
+  --bg-secondary: #e5f0e8;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fbf9;
+  --border-color: rgba(5, 150, 105, 0.2);
+  --border-highlight: rgba(5, 150, 105, 0.45);
+  
+  --text-primary: #041f11;
+  --text-secondary: #133c24;
+  --text-muted: #2d5a3d;
+  --nav-bg: #f2f7f4;
+  --grid-color: rgba(5, 150, 105, 0.05);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* 2. Dark Mode - Obsidian Tech Night */
+html[data-theme="dark"],
+html.dark {
+  --bg-primary: #09120e;
+  --bg-secondary: #0f1c16;
+  --bg-card: #0f2017;
+  --bg-card-hover: #142a1f;
+  --border-color: rgba(16, 185, 129, 0.22);
+  --border-highlight: rgba(52, 211, 153, 0.45);
+
+  --text-primary: #f0fdf4;
+  --text-secondary: #a7f3d0;
+  --text-muted: #6ee7b7;
+  --nav-bg: #09120e;
+  --grid-color: rgba(52, 211, 153, 0.04);
+}
+
+/* =========================================================
+   ACCENT PALETTES (EMERALD, TEAL, BRAND SKY, INDIGO, ROSE, PURPLE, AMBER)
+   ========================================================= */
+
+html[data-accent="green"], body[data-accent="green"], [data-accent="green"] {
+  --accent-primary: #059669 !important;
+  --accent-secondary: #10b981 !important;
+  --accent-glow: rgba(16, 185, 129, 0.35) !important;
+  --accent-border: rgba(16, 185, 129, 0.6) !important;
+}
+
+html[data-accent="teal"], body[data-accent="teal"], [data-accent="teal"] {
+  --accent-primary: #0d9488 !important;
+  --accent-secondary: #14b8a6 !important;
+  --accent-glow: rgba(20, 184, 166, 0.35) !important;
+  --accent-border: rgba(20, 184, 166, 0.6) !important;
+}
+
+html[data-accent="brand"], body[data-accent="brand"], [data-accent="brand"] {
+  --accent-primary: #0284c7 !important;
+  --accent-secondary: #38bdf8 !important;
+  --accent-glow: rgba(56, 189, 248, 0.35) !important;
+  --accent-border: rgba(56, 189, 248, 0.6) !important;
+}
+
+html[data-accent="default"], body[data-accent="default"], [data-accent="default"] {
+  --accent-primary: #4f46e5 !important;
+  --accent-secondary: #6366f1 !important;
+  --accent-glow: rgba(99, 102, 241, 0.35) !important;
+  --accent-border: rgba(99, 102, 241, 0.6) !important;
+}
+
+html[data-accent="rose"], body[data-accent="rose"], [data-accent="rose"] {
+  --accent-primary: #e11d48 !important;
+  --accent-secondary: #f43f5e !important;
+  --accent-glow: rgba(244, 63, 94, 0.35) !important;
+  --accent-border: rgba(244, 63, 94, 0.6) !important;
+}
+
+html[data-accent="purple"], body[data-accent="purple"], [data-accent="purple"] {
+  --accent-primary: #9333ea !important;
+  --accent-secondary: #a855f7 !important;
+  --accent-glow: rgba(168, 85, 247, 0.35) !important;
+  --accent-border: rgba(168, 85, 247, 0.6) !important;
+}
+
+html[data-accent="amber"], body[data-accent="amber"], [data-accent="amber"] {
+  --accent-primary: #d97706 !important;
+  --accent-secondary: #f59e0b !important;
+  --accent-glow: rgba(245, 158, 11, 0.35) !important;
+  --accent-border: rgba(245, 158, 11, 0.6) !important;
+}
+
+/* =========================================================
+   BODY & THEME ENFORCEMENT
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+}
+
+/* Light Mode Rules */
+html[data-theme="light"] body,
+html.light body {
+  background-color: #f2f7f4 !important;
+  color: #041f11 !important;
+}
+
+html[data-theme="light"] .glass-card,
+html.light .glass-card {
+  background-color: #ffffff !important;
+  border-color: rgba(5, 150, 105, 0.2) !important;
+}
+
+html[data-theme="light"] h1,
+html[data-theme="light"] h2,
+html[data-theme="light"] h3,
+html[data-theme="light"] h4,
+html[data-theme="light"] h5,
+html[data-theme="light"] h6,
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6 {
+  color: #041f11 !important;
+}
+
+html[data-theme="light"] p,
+html.light p {
+  color: #133c24 !important;
+}
+
+/* Dark Mode Rules */
+html[data-theme="dark"] body,
+html.dark body {
+  background-color: #09120e !important;
+  color: #f0fdf4 !important;
+}
+
+html[data-theme="dark"] .glass-card,
+html.dark .glass-card {
+  background-color: #0f2017 !important;
+  border-color: rgba(16, 185, 129, 0.22) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #a7d4ba;
+  border-radius: 6px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #1e4a33;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Glassmorphic Styles */
+.glass-nav {
+  background-color: var(--nav-bg) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.glass-card {
+  background-color: var(--bg-card) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color) !important;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.glass-card:hover {
+  background-color: var(--bg-card-hover) !important;
+  border-color: var(--accent-border) !important;
+  box-shadow: 0 12px 28px -6px var(--accent-glow) !important;
+}
+
+/* Background Grid Pattern */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+}
+
+/* Dynamic Gradient Text (Adapts automatically to current Accent Color) */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Dynamic Accent Button (Adapts automatically to current Accent Color) */
+.btn-accent {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px -2px var(--accent-glow) !important;
+}
+.btn-accent:hover {
+  opacity: 0.92;
+  box-shadow: 0 6px 20px -2px var(--accent-glow) !important;
+}
+
+/* Spinning Gear Animation */
+@keyframes gear-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-gear-spin {
+  animation: gear-spin 8s linear infinite;
+}
+
+.animate-gear-spin:hover {
+  animation-duration: 3s;
+}
+
+/* SweetAlert2 Customization */
+.swal2-popup {
+  background-color: var(--bg-card) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: 1.25rem !important;
+}
+.swal2-title, .swal2-html-container {
+  color: var(--text-primary) !important;
 }
