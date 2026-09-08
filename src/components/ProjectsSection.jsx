@@ -168,22 +168,20 @@ export default function ProjectsSection() {
 
                   <div>
                     {/* Modern Browser Chrome Window Top Bar */}
-                    <div className="px-4 py-2.5 bg-slate-100/90 dark:bg-slate-950/90 border-b border-emerald-500/15 dark:border-slate-800 flex items-center justify-between gap-3 select-none">
-                      {/* 3 macOS Window Control Dots */}
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80 group-hover:bg-rose-500 transition-colors shadow-xs" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80 group-hover:bg-amber-400 transition-colors shadow-xs" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 group-hover:bg-emerald-500 transition-colors shadow-xs" />
-                      </div>
+                    <div className="px-3.5 sm:px-4 py-2 bg-slate-100/90 dark:bg-slate-950/90 border-b border-emerald-500/15 dark:border-slate-800 flex items-center justify-between gap-2.5 select-none">
+                      {/* Project Type Badge */}
+                      <span className="px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/25 shrink-0">
+                        {project.badge}
+                      </span>
 
                       {/* Centered Glass URL Bar with Domain Display */}
-                      <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/70 dark:bg-slate-900/70 border border-emerald-500/10 dark:border-slate-800 text-[10px] font-mono text-emerald-900/70 dark:text-slate-400 max-w-[220px] truncate">
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/70 dark:bg-slate-900/70 border border-emerald-500/10 dark:border-slate-800 text-[10px] font-mono text-emerald-900/70 dark:text-slate-400 max-w-[170px] sm:max-w-[210px] truncate">
                         <Lock className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
                         <span className="truncate">https://{domain}</span>
                       </div>
 
                       {/* Live Status Indicator */}
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-700 dark:text-emerald-400">
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-700 dark:text-emerald-400 shrink-0">
                         <span className="relative flex h-2 w-2">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -203,13 +201,6 @@ export default function ProjectsSection() {
 
                       {/* Soft Vignette Mask */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-70 group-hover:opacity-40 transition-opacity duration-300" />
-
-                      {/* Floating Badges */}
-                      <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
-                        <span className="px-3 py-1 rounded-xl text-[10px] font-black uppercase tracking-wider backdrop-blur-md bg-slate-950/80 text-emerald-400 border border-emerald-500/30 shadow-sm">
-                          {project.badge}
-                        </span>
-                      </div>
 
                       <div className="absolute top-3.5 right-3.5">
                         <span className="px-3 py-1 rounded-xl text-[10px] font-bold backdrop-blur-md bg-slate-950/70 text-white/90 border border-white/10 shadow-sm">
