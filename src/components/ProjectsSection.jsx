@@ -77,8 +77,8 @@ export default function ProjectsSection() {
             Engineered with complete production workflows, role-based dashboards, database architectures, and responsive interfaces.
           </p>
 
-          {/* Interactive Filter Bar */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-8 p-1.5 rounded-2xl bg-emerald-950/5 dark:bg-slate-900/80 border border-emerald-500/15 dark:border-slate-800 backdrop-blur-md max-w-fit mx-auto">
+          {/* Interactive Filter Bar (Strictly 1 Line) */}
+          <div className="flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 mt-8 p-1.5 rounded-2xl bg-emerald-950/5 dark:bg-slate-900/80 border border-emerald-500/15 dark:border-slate-800 backdrop-blur-md max-w-full sm:max-w-fit mx-auto overflow-x-auto no-scrollbar">
             {categories.map((cat) => {
               const count = getCategoryCount(cat.value);
               const isSelected = selectedCategory === cat.value;
@@ -88,7 +88,7 @@ export default function ProjectsSection() {
                   key={cat.value}
                   type="button"
                   onClick={() => setSelectedCategory(cat.value)}
-                  className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer flex items-center gap-2 ${
+                  className={`whitespace-nowrap shrink-0 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
                     isSelected
                       ? "btn-accent text-white font-black shadow-md scale-[1.02]"
                       : "text-emerald-900 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-white hover:bg-emerald-500/10 dark:hover:bg-slate-800/60"

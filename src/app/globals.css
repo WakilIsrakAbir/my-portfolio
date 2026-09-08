@@ -197,6 +197,14 @@ html.dark ::-webkit-scrollbar-thumb {
   background: var(--accent-primary);
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Glassmorphic Styles */
 .glass-nav {
   background-color: var(--nav-bg) !important;
