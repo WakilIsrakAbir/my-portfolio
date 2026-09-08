@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
   ArrowUpRight, 
   Sparkles, 
@@ -11,13 +11,7 @@ import {
 } from "lucide-react";
 import { projectsData } from "@/data/portfolioData";
 import ProjectModal from "./ProjectModal";
-import { 
-  sectionHeaderMotion, 
-  staggerContainer,
-  buttonHover, 
-  tapPress,
-  appleEase 
-} from "@/utils/motion";
+import { sectionHeaderMotion } from "@/utils/motion";
 
 function extractDomain(url) {
   if (!url) return "portfolio.internal/case-study";
@@ -28,19 +22,6 @@ function extractDomain(url) {
     return "production-app.live";
   }
 }
-
-const cardVariant = {
-  hidden: { opacity: 0, y: 32, scale: 0.96 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.7,
-      ease: appleEase,
-    },
-  },
-};
 
 export default function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -96,7 +77,7 @@ export default function ProjectsSection() {
             Engineered with complete production workflows, role-based dashboards, database architectures, and responsive interfaces.
           </p>
 
-          {/* Interactive Filter Bar with Sliding Pill */}
+          {/* Interactive Filter Bar */}
           <div className="flex flex-wrap items-center justify-center gap-2 mt-8 p-1.5 rounded-2xl bg-emerald-950/5 dark:bg-slate-900/80 border border-emerald-500/15 dark:border-slate-800 backdrop-blur-md max-w-fit mx-auto">
             {categories.map((cat) => {
               const count = getCategoryCount(cat.value);
@@ -105,26 +86,20 @@ export default function ProjectsSection() {
               return (
                 <button
                   key={cat.value}
+                  type="button"
                   onClick={() => setSelectedCategory(cat.value)}
-                  className={`relative px-4 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer z-10 flex items-center gap-1.5 ${
+                  className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer flex items-center gap-2 ${
                     isSelected
-                      ? "text-white dark:text-emerald-950 font-black"
-                      : "text-emerald-900 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-white"
+                      ? "btn-accent text-white font-black shadow-md scale-[1.02]"
+                      : "text-emerald-900 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-white hover:bg-emerald-500/10 dark:hover:bg-slate-800/60"
                   }`}
                 >
-                  {isSelected && (
-                    <motion.div
-                      layoutId="activeProjectCategoryPill"
-                      className="absolute inset-0 rounded-xl btn-accent shadow-sm"
-                      transition={{ type: "spring", stiffness: 350, damping: 28 }}
-                    />
-                  )}
-                  <span className="relative z-10">{cat.label}</span>
+                  <span>{cat.label}</span>
                   <span
-                    className={`relative z-10 text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-black ${
                       isSelected
-                        ? "bg-white/20 text-white dark:text-emerald-950"
-                        : "bg-emerald-500/10 text-emerald-700 dark:text-slate-400"
+                        ? "bg-white/25 text-white"
+                        : "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400"
                     }`}
                   >
                     {count}
@@ -135,28 +110,17 @@ export default function ProjectsSection() {
           </div>
         </motion.div>
 
-        {/* Project Cards Grid with Staggered Cascading Reveal */}
-        <motion.div 
-          variants={staggerContainer(0.09, 0.05)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.08 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, idx) => {
-              const domain = extractDomain(project.liveUrl);
+        {/* Project Cards Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+          {filteredProjects.map((project, idx) => {
+            const domain = extractDomain(project.liveUrl);
 
-              return (
-                <motion.article
-                  key={project.id}
-                  layout
-                  variants={cardVariant}
-                  exit={{ opacity: 0, scale: 0.94, transition: { duration: 0.22, ease: appleEase } }}
-                  whileHover={{ y: -6 }}
-                  onMouseMove={handleMouseMove}
-                  className="group relative rounded-3xl glass-card overflow-hidden border border-emerald-500/20 dark:border-slate-800 hover:border-emerald-500/50 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between"
-                >
+            return (
+              <article
+                key={project.id}
+                onMouseMove={handleMouseMove}
+                className="group relative rounded-3xl glass-card overflow-hidden border border-emerald-500/20 dark:border-slate-800 hover:border-emerald-500/50 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
+              >
                   {/* Interactive Dynamic Mouse Spotlight Radial Glow */}
                   <div
                     className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
@@ -306,11 +270,10 @@ export default function ProjectsSection() {
                     </div>
                   </div>
 
-                </motion.article>
+                </article>
               );
             })}
-          </AnimatePresence>
-        </motion.div>
+        </div>
 
         {/* Modal Window for full breakdown */}
         <ProjectModal
