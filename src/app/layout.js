@@ -50,15 +50,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`dark ${geistSans.variable} ${geistMono.variable}`} data-theme="dark">
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
-                  var scheme = localStorage.getItem('abir-scheme') || 'light';
-                  if (scheme === 'green') scheme = 'light';
+                  var scheme = localStorage.getItem('abir-scheme') || 'dark';
+                  if (scheme === 'green') scheme = 'dark';
                   var accent = localStorage.getItem('abir-accent') || 'green';
                   var root = document.documentElement;
                   root.setAttribute('data-accent', accent);
