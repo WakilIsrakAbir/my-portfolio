@@ -1,27 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Quote, Mail, Phone, Building2, UserCheck } from "lucide-react";
 import { referencesData } from "@/data/portfolioData";
-import { 
-  sectionHeaderMotion, 
-  bilateralSlide, 
-  cardHover 
-} from "@/utils/motion";
 
 export default function ReferencesSection() {
   return (
     <section className="py-14 sm:py-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Heading: Enters from Top with Luxury Blur */}
-        <motion.div 
-          variants={sectionHeaderMotion}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="text-center max-w-3xl mx-auto mb-10"
-        >
+        {/* Section Heading */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2.5">
             <UserCheck className="w-3.5 h-3.5" />
             Verified Endorsements
@@ -32,27 +20,19 @@ export default function ReferencesSection() {
           <p className="mt-2 text-xs sm:text-sm text-emerald-900/90 dark:text-slate-300 max-w-xl mx-auto">
             Endorsed by faculty leaders and technical supervisors from Southeast University.
           </p>
-        </motion.div>
+        </div>
 
-        {/* References Grid: Bilateral Alternating Entrance */}
+        {/* References Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {referencesData.map((ref, idx) => (
-            <motion.div
+            <div
               key={idx}
-              variants={bilateralSlide(idx)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-              whileHover={cardHover}
-              className="p-5 sm:p-6 rounded-3xl glass-card relative flex flex-col justify-between shadow-sm hover:shadow-xl border border-emerald-500/20 dark:border-slate-800 transition-colors"
+              className="p-5 sm:p-6 rounded-3xl glass-card relative flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-0.5 border border-emerald-500/20 dark:border-slate-800 transition-all duration-300"
             >
               <div>
-                <motion.div
-                  animate={{ y: [0, -5, 0] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: idx * 0.5 }}
-                >
+                <div>
                   <Quote className="w-7 h-7 text-emerald-500/50 mb-2.5" />
-                </motion.div>
+                </div>
                 <p className="text-xs sm:text-sm text-emerald-900 dark:text-slate-300 italic mb-5 leading-relaxed font-medium">
                   &ldquo;{ref.endorsement}&rdquo;
                 </p>
@@ -88,7 +68,7 @@ export default function ReferencesSection() {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

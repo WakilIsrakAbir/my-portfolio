@@ -19,7 +19,6 @@ import { experienceData, educationData } from "@/data/portfolioData";
 import { 
   sectionHeaderMotion, 
   slideFromLeft, 
-  slideFromRight, 
   cardHover,
   appleEase
 } from "@/utils/motion";
@@ -223,11 +222,7 @@ export default function ExperienceTimeline() {
              ======================================================== */}
           <div>
             {/* Sub-Header Banner */}
-            <motion.div 
-              variants={slideFromRight}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+            <div 
               className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 mb-8 border-b border-teal-500/20 dark:border-slate-800"
             >
               <div className="flex items-center gap-3">
@@ -247,7 +242,7 @@ export default function ExperienceTimeline() {
               <span className="self-start sm:self-auto px-3 py-1 rounded-full text-xs font-black tracking-wider uppercase bg-teal-500/10 text-teal-700 dark:text-teal-300 border border-teal-500/25 shrink-0">
                 3 Degrees & Diplomas
               </span>
-            </motion.div>
+            </div>
 
             {/* Education Milestone Cards (Stacked Wide Roadmap) */}
             <div className="space-y-4 sm:space-y-5">
@@ -256,14 +251,9 @@ export default function ExperienceTimeline() {
                 const isPrimary = idx === 0;
 
                 return (
-                  <motion.div
+                  <div
                     key={idx}
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    whileHover={{ y: -5, scale: 1.01 }}
-                    transition={{ duration: 0.65, delay: idx * 0.1, ease: appleEase }}
-                    className={`p-5 sm:p-7 rounded-3xl glass-card relative overflow-hidden transition-colors shadow-sm hover:shadow-xl border ${
+                    className={`p-5 sm:p-7 rounded-3xl glass-card relative overflow-hidden transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-0.5 border ${
                       isPrimary
                         ? "border-emerald-500/40 ring-1 ring-emerald-500/20"
                         : "border-emerald-500/15 dark:border-slate-800"
@@ -323,7 +313,7 @@ export default function ExperienceTimeline() {
                       </div>
 
                     </div>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
