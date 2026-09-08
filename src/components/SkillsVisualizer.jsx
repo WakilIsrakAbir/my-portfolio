@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { 
   ResponsiveContainer, 
   RadarChart, 
@@ -26,12 +25,6 @@ import {
 } from "lucide-react";
 import { skillsData } from "@/data/portfolioData";
 import { TechIcon } from "./TechIcons";
-import { 
-  sectionHeaderMotion, 
-  staggerContainer, 
-  scalePop, 
-  cardHover 
-} from "@/utils/motion";
 
 export default function SkillsVisualizer() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -113,14 +106,8 @@ export default function SkillsVisualizer() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Heading */}
-        <motion.div 
-          variants={sectionHeaderMotion}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="text-center max-w-3xl mx-auto mb-10"
-        >
+        {/* Section Heading: Clean and Instant */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2.5">
             <Cpu className="w-3.5 h-3.5" />
             Core Capabilities
@@ -131,7 +118,7 @@ export default function SkillsVisualizer() {
           <p className="mt-2 text-xs sm:text-sm text-emerald-900/90 dark:text-slate-300 max-w-xl mx-auto">
             Categorized across dedicated engineering domains: Languages, Frontend, UI & Design, Backend, Databases, Tools, and Office Suites.
           </p>
-        </motion.div>
+        </div>
 
         {/* Top Control Bar: Category Jump & View Switcher */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3.5 mb-8 p-3 rounded-2xl glass-card shadow-xs">
@@ -193,18 +180,14 @@ export default function SkillsVisualizer() {
         {/* Content View: Divided Category Sections vs Radar */}
         {activeView === "cards" ? (
           <div className="space-y-12 sm:space-y-14">
-            {categoriesToRender.map((category, catIndex) => {
+            {categoriesToRender.map((category) => {
               const meta = categoryMeta[category.id] || categoryMeta.frontend;
               const Icon = meta.icon;
               const skills = category.skills;
 
               return (
-                <motion.div
+                <div
                   key={category.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: catIndex * 0.1 }}
                   className="space-y-4"
                 >
                   {/* Category Section Header Banner */}
@@ -233,25 +216,17 @@ export default function SkillsVisualizer() {
                     </span>
                   </div>
 
-                  {/* Category Grid of Interactive Cards: Orchestrated Stagger */}
-                  <motion.div 
-                    variants={staggerContainer(0.08, 0.04)}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.1 }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
-                  >
+                  {/* Category Grid of Interactive Cards */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
                     {skills.map((skill) => {
                       const radius = 22;
                       const circumference = 2 * Math.PI * radius;
                       const strokeDashoffset = circumference - (skill.level / 100) * circumference;
 
                       return (
-                        <motion.div
+                        <div
                           key={skill.name}
-                          variants={scalePop}
-                          whileHover={cardHover}
-                          className="p-4 sm:p-5 rounded-2xl glass-card group relative overflow-hidden flex flex-col shadow-xs hover:border-emerald-500/40 hover:shadow-lg transition-colors"
+                          className="p-4 sm:p-5 rounded-2xl glass-card group relative overflow-hidden flex flex-col shadow-xs hover:border-emerald-500/40 hover:shadow-lg transition-all duration-200"
                         >
                           {/* Ambient Glow */}
                           <div
@@ -273,7 +248,7 @@ export default function SkillsVisualizer() {
                               </h4>
                             </div>
 
-                            {/* Circular SVG Meter (Optimized CSS Transition) */}
+                            {/* Circular SVG Meter */}
                             <div className="relative flex items-center justify-center w-12 h-12 shrink-0">
                               <svg className="w-12 h-12 -rotate-90" viewBox="0 0 54 54">
                                 <circle
@@ -295,7 +270,6 @@ export default function SkillsVisualizer() {
                                   strokeDasharray={circumference}
                                   strokeDashoffset={strokeDashoffset}
                                   strokeLinecap="round"
-                                  style={{ transition: "stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1)" }}
                                 />
                               </svg>
                               <span className="absolute text-[10px] font-black text-emerald-950 dark:text-white">
@@ -308,21 +282,17 @@ export default function SkillsVisualizer() {
                           <p className="text-xs text-emerald-900/90 dark:text-slate-300 leading-relaxed">
                             {skill.description}
                           </p>
-                        </motion.div>
+                        </div>
                       );
                     })}
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               );
             })}
           </div>
         ) : (
           /* Competency Radar View */
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="p-6 sm:p-8 rounded-3xl glass-card max-w-4xl mx-auto shadow-sm"
-          >
+          <div className="p-6 sm:p-8 rounded-3xl glass-card max-w-4xl mx-auto shadow-sm">
             <div className="text-center mb-6">
               <h3 className="text-lg font-bold text-emerald-950 dark:text-white flex items-center justify-center gap-2">
                 <Sparkles className="w-4 h-4 text-emerald-500" />
@@ -364,7 +334,7 @@ export default function SkillsVisualizer() {
                 </ResponsiveContainer>
               )}
             </div>
-          </motion.div>
+          </div>
         )}
 
       </div>
