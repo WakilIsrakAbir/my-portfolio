@@ -218,12 +218,7 @@ export default function SkillsVisualizer() {
 
                   {/* Category Grid of Interactive Cards */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-                    {skills.map((skill) => {
-                      const radius = 22;
-                      const circumference = 2 * Math.PI * radius;
-                      const strokeDashoffset = circumference - (skill.level / 100) * circumference;
-
-                      return (
+                    {skills.map((skill) => (
                         <div
                           key={skill.name}
                           className="p-4 sm:p-5 rounded-2xl glass-card group relative overflow-hidden flex flex-col shadow-xs hover:border-emerald-500/40 hover:shadow-lg transition-all duration-200"
@@ -234,7 +229,7 @@ export default function SkillsVisualizer() {
                             style={{ backgroundColor: skill.color }}
                           />
 
-                          {/* Card Top: Brand Logo & Circular Radial Progress Gauge */}
+                          {/* Card Top: Brand Logo & Experience Level Badge */}
                           <div className="flex items-center justify-between gap-3 mb-3">
                             <div className="flex items-center gap-3 min-w-0">
                               <div
@@ -248,34 +243,17 @@ export default function SkillsVisualizer() {
                               </h4>
                             </div>
 
-                            {/* Circular SVG Meter */}
-                            <div className="relative flex items-center justify-center w-12 h-12 shrink-0">
-                              <svg className="w-12 h-12 -rotate-90" viewBox="0 0 54 54">
-                                <circle
-                                  cx="27"
-                                  cy="27"
-                                  r={radius}
-                                  stroke="currentColor"
-                                  strokeWidth="4"
-                                  fill="transparent"
-                                  className="text-slate-200 dark:text-slate-800"
-                                />
-                                <circle
-                                  cx="27"
-                                  cy="27"
-                                  r={radius}
-                                  stroke={skill.color}
-                                  strokeWidth="4"
-                                  fill="transparent"
-                                  strokeDasharray={circumference}
-                                  strokeDashoffset={strokeDashoffset}
-                                  strokeLinecap="round"
-                                />
-                              </svg>
-                              <span className="absolute text-[10px] font-black text-emerald-950 dark:text-white">
-                                {skill.level}%
-                              </span>
-                            </div>
+                            {/* Experience Level Badge */}
+                            <span
+                              className="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider border shrink-0"
+                              style={{
+                                color: skill.color,
+                                borderColor: `${skill.color}33`,
+                                backgroundColor: `${skill.color}15`,
+                              }}
+                            >
+                              {skill.experience}
+                            </span>
                           </div>
 
                           {/* Detailed Description */}
@@ -283,8 +261,7 @@ export default function SkillsVisualizer() {
                             {skill.description}
                           </p>
                         </div>
-                      );
-                    })}
+                      ))}
                   </div>
                 </div>
               );
