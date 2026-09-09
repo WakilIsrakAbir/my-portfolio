@@ -18,14 +18,23 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: {
-    default: "Abir",
-    template: "%s | Wakil Israk Abir",
+    default: "Abir's Portfolio",
+    template: "%s | Abir's Portfolio",
+  },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon-256.png",
   },
   description:
     "Official portfolio of Wakil Israk Abir. B.Sc. in Computer Science & Engineering graduate (CGPA 3.59) from Southeast University. Specializing in React, Next.js, Node.js, Express, MongoDB, and modern IT operations.",
   keywords: [
     "Wakil Israk Abir",
     "Abir",
+    "Abir's Portfolio",
     "MERN Stack Developer",
     "Full-Stack Developer",
     "React Developer",
@@ -39,10 +48,10 @@ export const metadata = {
   authors: [{ name: "Wakil Israk Abir", url: "https://github.com/WakilIsrakAbir" }],
   creator: "Wakil Israk Abir",
   openGraph: {
-    title: "Wakil Israk Abir | Full-Stack MERN Developer",
+    title: "Abir's Portfolio | Full-Stack MERN Developer",
     description: "Explore real-world full-stack web applications, management dashboards, and IT operations expertise by Wakil Israk Abir.",
     url: "https://wakil-israk-abir.vercel.app",
-    siteName: "Wakil Israk Abir Portfolio",
+    siteName: "Abir's Portfolio",
     locale: "en_US",
     type: "website",
   },

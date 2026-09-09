@@ -229,31 +229,17 @@ export default function SkillsVisualizer() {
                             style={{ backgroundColor: skill.color }}
                           />
 
-                          {/* Card Top: Brand Logo & Experience Level Badge */}
-                          <div className="flex items-center justify-between gap-3 mb-3">
-                            <div className="flex items-center gap-3 min-w-0">
-                              <div
-                                className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 border border-black/5 dark:border-white/10 shadow-xs group-hover:scale-105 transition-transform"
-                                style={{ backgroundColor: skill.bgColor }}
-                              >
-                                <TechIcon name={skill.key} className="w-6 h-6" />
-                              </div>
-                              <h4 className="text-sm sm:text-base font-black text-emerald-950 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors truncate">
-                                {skill.name}
-                              </h4>
-                            </div>
-
-                            {/* Experience Level Badge */}
-                            <span
-                              className="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider border shrink-0"
-                              style={{
-                                color: skill.color,
-                                borderColor: `${skill.color}33`,
-                                backgroundColor: `${skill.color}15`,
-                              }}
+                          {/* Card Top: Brand Logo & Title */}
+                          <div className="flex items-center gap-3 mb-3 min-w-0">
+                            <div
+                              className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 border border-black/5 dark:border-white/10 shadow-xs group-hover:scale-105 transition-transform"
+                              style={{ backgroundColor: skill.bgColor }}
                             >
-                              {skill.experience}
-                            </span>
+                              <TechIcon name={skill.key} className="w-6 h-6" />
+                            </div>
+                            <h4 className="text-sm sm:text-base font-black text-emerald-950 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors truncate">
+                              {skill.name}
+                            </h4>
                           </div>
 
                           {/* Detailed Description */}
