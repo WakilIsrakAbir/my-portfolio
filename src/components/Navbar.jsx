@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Code2, Sparkles, Send, FileDown } from "lucide-react";
+import { Menu, X, Code2, Sparkles, Send, Eye } from "lucide-react";
 import { personalInfo } from "@/data/portfolioData";
 import confetti from "canvas-confetti";
 
@@ -170,13 +170,14 @@ export default function Navbar() {
 
               <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2">
                 <a
-                  href="/Abir-Resume.pdf"
-                  download="Wakil-Israk-Abir-Resume.pdf"
+                  href={personalInfo.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={handleResumeClick}
                   className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
                 >
-                  <FileDown className="w-4 h-4 text-teal-500" />
-                  <span>Download Resume</span>
+                  <Eye className="w-4 h-4 text-teal-500" />
+                  <span>View Resume</span>
                 </a>
                 <a
                   href={personalInfo.socials.gmail}

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  FileDown,
+  Eye,
   Mail,
   Phone,
   MapPin,
@@ -57,8 +57,8 @@ export default function Hero() {
 
     Swal.fire({
       icon: "success",
-      title: "Resume Ready!",
-      text: "Wakil Israk Abir's official PDF resume is now downloading. Feel free to review my qualifications!",
+      title: "Opening Resume!",
+      text: "Wakil Israk Abir's official resume is opening in Google Drive. Feel free to review or download it!",
       timer: 3500,
       timerProgressBar: true,
       showConfirmButton: false,
@@ -171,8 +171,9 @@ export default function Hero() {
               </Link>
 
               <a
-                href="/Abir-Resume.pdf"
-                download="Wakil-Israk-Abir-Resume.pdf"
+                href={personalInfo.resume}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={triggerResumeConfetti}
                 style={{
                   borderColor: "var(--accent-primary)",
@@ -180,8 +181,8 @@ export default function Hero() {
                 }}
                 className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-extrabold border-2 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 shadow-sm hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-xs sm:text-sm cursor-pointer"
               >
-                <FileDown className="w-4 h-4" />
-                <span>Download Resume</span>
+                <Eye className="w-4 h-4" />
+                <span>View Resume</span>
               </a>
             </motion.div>
 
