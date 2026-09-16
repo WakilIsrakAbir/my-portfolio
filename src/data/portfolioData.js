@@ -8,7 +8,7 @@ export const personalInfo = {
   phone: "+880 1849-846805",
   location: "East Nakhalpara, Tejgaon, Dhaka, Bangladesh",
   heroImage: "/hero image.jpg",
-  resume: "https://drive.google.com/file/d/1semWXqAVNjRBVPWm5TM3fRgq4iaTIV2t/view?usp=drive_link",
+  resume: "https://drive.google.com/file/d/1lAmDARy31xwomQqh9ofW_o6TpthNaKUc/view?usp=sharing",
   socials: {
     github: "https://github.com/WakilIsrakAbir",
     linkedin: "https://www.linkedin.com/in/wakil-israk-abir/",
