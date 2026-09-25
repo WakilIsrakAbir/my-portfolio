@@ -43,7 +43,9 @@ export const metadata = {
     "Software Engineer Bangladesh",
     "Southeast University CSE",
     "KitchenHood",
-    "Textile Planning Solution"
+    "Textile Planning Solution",
+    "To Let SEU",
+    "MediCare Connect"
   ],
   authors: [{ name: "Wakil Israk Abir", url: "https://github.com/WakilIsrakAbir" }],
   creator: "Wakil Israk Abir",

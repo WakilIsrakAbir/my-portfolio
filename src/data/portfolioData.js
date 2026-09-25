@@ -52,6 +52,17 @@ export const skillsData = {
           usedIn: "All Full-Stack & Frontend Applications",
         },
         {
+          name: "TypeScript",
+          level: 88,
+          experience: "Advanced",
+          key: "ts",
+          color: "#3178c6",
+          bgColor: "rgba(49, 120, 198, 0.12)",
+          description:
+            "Static typing, interfaces, generics, type guards & scalable architectural contracts",
+          usedIn: "To-Let SEU & Modern Next.js Architectures",
+        },
+        {
           name: "C",
           level: 86,
           experience: "Core CS",
@@ -111,7 +122,7 @@ export const skillsData = {
           color: "#ffffff",
           bgColor: "rgba(255, 255, 255, 0.12)",
           description: "App router, SSR, SSG, Server Actions & API endpoints",
-          usedIn: "Interactive Portfolio & Modern Web Apps",
+          usedIn: "To-Let SEU, Portfolio & Modern Web Apps",
         },
         {
           name: "HTML5",
@@ -460,32 +471,6 @@ export const projectsData = [
     gradient: "from-cyan-500 via-teal-500 to-emerald-500",
   },
   {
-    id: "cara-ecommerce",
-    title: "Cara E-commerce Fashion Shop",
-    category: "Frontend UI/UX",
-    featured: false,
-    image: "/projects/cara.png",
-    shortDescription:
-      "Pixel-perfect responsive fashion e-commerce storefront with custom hamburger navigation, catalog grids, and dynamic shopping cart flow.",
-    description:
-      "Developed a fully responsive fashion e-commerce website using HTML, CSS, and JavaScript. I built this project to strengthen my core frontend skills, which gave me the perfect opportunity to learn how media queries work for mobile responsiveness. I also implemented a custom hamburger menu for smaller screens, and designed static layouts for product listings and a shopping cart to showcase a complete e-commerce interface.",
-    technologies: [
-      "HTML5",
-      "CSS3",
-      "JavaScript",
-      "Responsive UI",
-    ],
-    liveUrl: "https://cara-fashion-shop.netlify.app/",
-    githubUrl: "https://github.com/WakilIsrakAbir",
-    highlights: [
-      "Mobile-first responsive styling with custom media queries and hamburger drawer menu",
-      "Structured product catalog grids, item detail showcases, and interactive shopping cart",
-      "Clean semantic architecture showcasing solid vanilla frontend craftsmanship",
-    ],
-    badge: "Frontend Craft",
-    gradient: "from-purple-500 via-pink-500 to-rose-500",
-  },
-  {
     id: "modern-portfolio",
     title: "Interactive Developer Portfolio",
     category: "Full-Stack MERN",
@@ -540,6 +525,63 @@ export const projectsData = [
     ],
     badge: "International App",
     gradient: "from-amber-500 via-orange-500 to-red-500",
+  },
+  {
+    id: "to-let-seu",
+    title: "To Let SEU - Campus Bachelor Housing Portal",
+    category: "Full-Stack MERN",
+    featured: true,
+    image: "/To-Let-SEU.png",
+    shortDescription:
+      "Comprehensive bachelor accommodation & roommate finder engineered for Southeast University students with verified listings, instant WhatsApp contact, and automated banner generation.",
+    description:
+      "Engineered an end-to-end student accommodation network exclusively for Southeast University undergraduates and peers around the Tejgaon permanent campus. The platform enables students to discover verified bachelor seats, private rooms, and shared flats without third-party broker fees. Features area and gender-based multi-criteria filtering, direct WhatsApp & phone contact channels, seamless ad posting with Cloudinary media management, Firebase authentication, and an innovative built-in Auto Poster & Banner Generator that creates customized social media promotional banners for university Facebook groups on the fly.",
+    technologies: [
+      "TypeScript",
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Cloudinary",
+      "Firebase",
+      "Tailwind CSS",
+    ],
+    liveUrl: "https://to-let-seu-client.vercel.app/",
+    githubUrl: "https://github.com/WakilIsrakAbir",
+    highlights: [
+      "Targeted campus housing portal connecting verified Southeast University students with zero mediator fees",
+      "Multi-parameter search engine filtering by Tejgaon campus neighborhoods, price range, and gender requirements",
+      "Automated Banner & Poster Generator engine producing instant branded graphics for SEU Facebook communities",
+      "Cloudinary media pipeline for high-resolution room photos and Firebase student authentication",
+    ],
+    badge: "Campus Platform",
+    gradient: "from-emerald-500 via-teal-500 to-amber-500",
+  },
+  {
+    id: "cara-ecommerce",
+    title: "Cara E-commerce Fashion Shop",
+    category: "Frontend UI/UX",
+    featured: false,
+    image: "/projects/cara.png",
+    shortDescription:
+      "Pixel-perfect responsive fashion e-commerce storefront with custom hamburger navigation, catalog grids, and dynamic shopping cart flow.",
+    description:
+      "Developed a fully responsive fashion e-commerce website using HTML, CSS, and JavaScript. I built this project to strengthen my core frontend skills, which gave me the perfect opportunity to learn how media queries work for mobile responsiveness. I also implemented a custom hamburger menu for smaller screens, and designed static layouts for product listings and a shopping cart to showcase a complete e-commerce interface.",
+    technologies: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Responsive UI",
+    ],
+    liveUrl: "https://cara-fashion-shop.netlify.app/",
+    githubUrl: "https://github.com/WakilIsrakAbir",
+    highlights: [
+      "Mobile-first responsive styling with custom media queries and hamburger drawer menu",
+      "Structured product catalog grids, item detail showcases, and interactive shopping cart",
+      "Clean semantic architecture showcasing solid vanilla frontend craftsmanship",
+    ],
+    badge: "Frontend Craft",
+    gradient: "from-purple-500 via-pink-500 to-rose-500",
   },
 ];
 
